@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background: url(Background_image.jpg);
+    background-size: cover;
+}
+
+.container{
+    width: 800px;
+    height: 100vh;
+}
+
+/* jumbotron */
+
+h1{
+    text-transform: uppercase; 
+}
+
+h4{
+    margin: 20px 0;
+}
+
+.jumbotron{
+    box-shadow: 1px 2px 7px;
+    margin-top: 50vh;
+    transform: translateY(-50%);
+    padding: 30px;
+}
+
+input{
+    text-align: center;
+    padding: 10px;
+    width: 400px;
+}
+
+p{
+    font-size: x-large;
+    margin: 20px auto;
+    width: 80%;
+}
+
+button{
+    text-transform: uppercase;
+    margin: 20px;
+}
+
+#btn-ini{
+    padding: 10px 20px;
+}
+
+button[name='btn_resp']{
+    width: 80%;
+    padding: 10px 0;
+    border: solid 1px #333;
+    border-radius: 3px;
+    box-shadow: 1px 2px 3px #777;
+}
+
+#res{
+    font-size: x-large;
+}
+
+#icon-acerto{
+    color: rgb(0, 196, 0);
+    margin: 0 10px;
+}
+
+#icon-erro{
+    color: red;
+    margin: 0 10px;
+}
+
+#copy p{
+    margin: 0 auto;
+    color: #555;
+    font-size: small;
+}

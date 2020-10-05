@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style_quiz.css">
+    <link rel="shortcut icon" href="../Imagens de Vídeos/Icones/atomic.svg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <title>Quiz</title>
+</head>
+<body>
+    <div class="container col text-center">
+        <div class="jumbotron">
+            <div id="inicio">
+                <h2>Teste seu conhecimento sobre a experiência</h2>
+                <h4>Boa sorte! 😉</h4>
+                <button type="button" id="btn-ini" class="btn btn-dark btn-sm" onclick="iniciar_quiz()">Iniciar quiz</button><br>
+            </div>
+
+            <div id="quiz" hidden>
+                <p></p>
+                <button name="btn_resp" onclick="catch_cod(0)"></button><br>
+                <button name="btn_resp" onclick="catch_cod(1)"></button><br>
+                <button name="btn_resp" onclick="catch_cod(2)"></button><br>
+                <button name="btn_resp" onclick="catch_cod(3)"></button><br>
+                <button type="button" class="btn btn-dark btn" id="btn_mp" onclick="alter_quest()">Proxima pergunta</button>
+            </div>
+            
+            <div id="res" hidden>
+                <div id="acertos">
+                    
+                </div>
+            </div>
+            
+            <button id="reset_quiz" class="btn btn-dark btn-sm" onclick="window.location.reload()"hidden>Jogar Novamente</button>
+            <div id="copy">
+                <p>&copy; Feito por Lucas Lopes Pultz</p>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+    
+
+    <script src="./js/script_quiz.js"></script> 
+</body>
+</html>

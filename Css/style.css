@@ -1,0 +1,132 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+/* div ,#video{
+    border: 1px solid;
+} */
+
+#col-left, #col-main, #col-rigth{
+    height: 100vh;
+}
+
+/* Titulo */
+
+#col-main #titulo{
+    height: 135px;
+    align-items: center;
+}
+
+#col-main #titulo ul{
+    list-style: none;
+    text-align: center;
+    margin:0 auto;
+}
+
+#col-main #titulo h1{
+    text-transform: uppercase;
+}
+
+/* Vídeo */
+
+#video{
+    margin: 20px auto;
+    text-align: center;
+}
+
+/* Links */
+
+#col-left ul,#col-right ul,#col-left-hidden ul,#col-right-hidden ul{
+    margin: 30px auto;
+    text-align: center;
+    list-style: none;
+}
+
+#col-left ul li,#col-right ul li, #col-left-hidden ul li,#col-right-hidden ul li{
+    padding: 10px 0;
+}
+
+#col-left-hidden{
+    display: none;
+}
+
+#col-right-hidden{
+    display: none;
+}
+
+/* Descrição */
+
+#descricao{
+    width: 808px;
+    text-align: justify;
+    margin: 30px auto;
+    padding: 10px;
+    position: static;
+}
+
+/* Card - quiz */
+
+.card{
+    padding: 10px;
+    width: 350px;
+    height: 350px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.card-body p{
+    margin: 20px 0 5px 0;
+}
+#icon-card{
+    width: 90px;
+    height: 90px;
+    margin-top: -10px;
+}
+
+#btn-id{
+    margin: 20px;
+    padding: 10px 50px;
+    text-transform: uppercase;
+    font-size: larger;
+    letter-spacing: 2px;
+}
+/* Responsividade */
+
+@media(max-width: 1200px){
+    #video video{
+        width: 550px;
+        height: 350px;
+    }
+    #descricao{
+        width: 600px;
+    }
+}
+
+@media(max-width: 900px){
+    #video video{
+        width: 400px;
+        height: 300px;
+    }
+
+    #col-left ul,#col-right ul{
+        margin:30px auto;
+        list-style: none;
+    }
+    #descricao{
+        width: 450px;
+    }
+}
+
+@media(max-width: 577px){
+    #video video{
+        width: 300px;
+        height: 200px;
+    }
+    #col-left,#col-right{
+        display: none;
+    }
+    #col-left-hidden,#col-right-hidden{
+        display: flex;
+    }
+}
