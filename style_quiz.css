@@ -6,7 +6,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-image: url('./Imagens\ e\ Vídeos/Background_image.jpg');
+    background: url('./Imagens e Vídeos/Background_image.jpg');
     background-size: cover;
 }
 
