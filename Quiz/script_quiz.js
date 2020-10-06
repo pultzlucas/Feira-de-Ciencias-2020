@@ -4,7 +4,7 @@ const quiz = {
     quant_quest: 3,
     respostas_corretas: [0,0,0],
     num_quest: {
-        num_perg: (contador) => {
+        num_perg: () => {
             if (contador === 1) {
                 return quiz.quests.perguntas[0]
             } else if (contador === 2) {
@@ -14,7 +14,7 @@ const quiz = {
             }
         },
 
-        num_resp: (contador) => {
+        num_resp: () => {
             if (contador === 1) {
                 return quiz.quests.respostas[0]
             } else if (contador === 2) {
@@ -44,17 +44,17 @@ const quiz = {
 
 //Funções de manipulação das informações do quiz, esseciais para o seu funcionamento
 
-//Retorna a quantidade de vezes que você executou a função alter quest.
-const array = []
-function contador(n = 1) {
-    let soma = 0
-    let num = n
-    array.push(num)
-    for (let indice in array) {
-        soma = soma + array[indice]
-    }
-    return soma
+//inicia o quiz 
+function iniciar_quiz() {
+    alter_layout(0)
 }
+
+//variável para que vai armazenar o número da perguna do quiz 
+let contador = 1
+document.querySelector('#btn_mp').addEventListener('click',()=>{
+    contador++
+    alter_quest()
+})
 
 //Essa função vai ser ativada quando um botão de respostas do quiz é clicado
 let cat_cod = ''
@@ -72,21 +72,19 @@ function send_cod() {
 //Função mãe que executa outras funções dependendo do número da pergunta do quiz
 function alter_quest() {
     button_color()
-    let c = contador()
-
     //condição para conferir se o usuário assinalou alguma alternativa
-    if (cat_cod.length === 0 && c>1) {
+    if (cat_cod.length === 0 && contador>1) {
         alert('Escolha uma alternativa para continuar o quiz.')
-        c = contador(-1)
+        contador--
     }else{
-        if(c>1 && c<=4){
+        if(contador>1 && contador<=4){
             send_cod()
             cat_cod = ''
         }
-        if (c > quiz.quant_quest) {
+        if (contador > quiz.quant_quest) {
             alter_layout()
         } else {
-            write_data(c)
+            write_data()
         }
         
     }
@@ -97,11 +95,6 @@ function alter_quest() {
 const res = document.querySelector('#res')
 const btn_resp = document.getElementsByName('btn_resp')
 const acertos = document.querySelector('#acertos')
-
-//inicia o quiz 
-function iniciar_quiz() {
-        alter_layout(0)
-}
 
 //Essa função serve para alterar o layout do quiz.
 function alter_layout(n) {
@@ -120,14 +113,14 @@ function alter_layout(n) {
 //Essa função escreve as perguntas e respostas do quiz. 
 //Ela é chamada toda vez que a pergunta do quiz muda 
 
-function write_data(c) {
-    if (c === quiz.quant_quest) {
+function write_data() {
+    if (contador === quiz.quant_quest) {
         document.querySelector('#btn_mp').innerHTML = 'Mostrar resultado'
     }
-    document.querySelector('p').innerHTML = quiz.num_quest.num_perg(c)
+    document.querySelector('p').innerHTML = quiz.num_quest.num_perg()
 
     for (let nq = 0; nq < 4; nq++) {
-        btn_resp[nq].innerHTML = quiz.num_quest.num_resp(c)[nq]
+        btn_resp[nq].innerHTML = quiz.num_quest.num_resp()[nq]
     }
 }
 
