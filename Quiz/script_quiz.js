@@ -1,29 +1,17 @@
-//informações do quiz como as perguntas, respostas, número de perguntas e as alternativas corretas.
+/* 
+=================================================================================================
+informações do quiz como as perguntas, respostas, número de perguntas e as alternativas corretas.
+=================================================================================================
+*/
 const quiz = {
-    codigo_resp: [],
-    quant_quest: 3,
-    respostas_corretas: [0,0,0],
-    num_quest: {
-        num_perg: () => {
-            if (contador === 1) {
-                return quiz.quests.perguntas[0]
-            } else if (contador === 2) {
-                return quiz.quests.perguntas[1]
-            } else {
-                return quiz.quests.perguntas[2]
-            }
-        },
+    
+    codigo_resp: [],/* Esse array vai armazenar as respostas do usuário de acordo com o código do botão 
+    que o usuário selecionou */
+    
+    quant_quest: 3, //quantidade de questões
 
-        num_resp: () => {
-            if (contador === 1) {
-                return quiz.quests.respostas[0]
-            } else if (contador === 2) {
-                return quiz.quests.respostas[1]
-            } else {
-                return quiz.quests.respostas[2]
-            }
-        }
-    },
+    respostas_corretas: [0,0,0],//Respostas corretas
+
     quests: {
         respostas: [
             ['Resposta certa','Resposta errada','Resposta errada','Resposta errada'],
@@ -42,15 +30,19 @@ const quiz = {
     }
 }
 
-//Funções de manipulação das informações do quiz, esseciais para o seu funcionamento
+/* 
+===================================================================================
+Funções de manipulação das informações do quiz, esseciais para o seu funcionamento.
+===================================================================================
+*/
 
 //inicia o quiz 
 function iniciar_quiz() {
     alter_layout(0)
 }
 
-//variável para que vai armazenar o número da perguna do quiz 
-let contador = 1
+
+let contador = 1//variável que vai armazenar o número da pergunta em que o usuário está
 document.querySelector('#btn_mp').addEventListener('click',()=>{
     contador++
     alter_quest()
@@ -63,8 +55,8 @@ function catch_cod(n) {
     button_color(n)
 }
 
-//Envia o código que foi capturado pelo catch_cod do botão para o código_resp depois que o botão de 
-//mudar pergunta foi clicado 
+/* Essa função envia o código que foi capturado pelo catch_cod do botão para o código_resp depois que o botão de 
+mudar pergunta foi clicado  */
 function send_cod() {
     quiz.codigo_resp.push(cat_cod)
 }
@@ -117,30 +109,35 @@ function write_data() {
     if (contador === quiz.quant_quest) {
         document.querySelector('#btn_mp').innerHTML = 'Mostrar resultado'
     }
-    document.querySelector('p').innerHTML = quiz.num_quest.num_perg()
+    document.querySelector('p').innerHTML = quiz.quests.perguntas[contador-1]
 
     for (let nq = 0; nq < 4; nq++) {
-        btn_resp[nq].innerHTML = quiz.num_quest.num_resp()[nq]
+        btn_resp[nq].innerHTML = quiz.quests.respostas[contador-1][nq]
     }
+}
+/* função para saber quais respostas estão corretas ou incorretas para armazenar no isTrue_orFalse
+e retornar esse array para a variável arr_respostas do show_res */
+function isCorrect_orNo(cod){
+    let isTrue_orFalse = []
+    quiz.respostas_corretas.forEach( (_,i)=>{
+        isTrue_orFalse.push([])
+        isTrue_orFalse[i].push(`PERGUNTA ${i+1}`)
+        isTrue_orFalse[i].push(cod[i] == quiz.respostas_corretas[i])
+    } )
+    return isTrue_orFalse
 }
 
 //Mostra o resultado do quiz para o usuário
 function Show_res(cod) {
-    let arr_respostas = []
+    const arr_respostas = isCorrect_orNo(cod)
 
-    //loop para armazenar no arr_respostas as respostas erradas e corretas
-    quiz.respostas_corretas.forEach( (_,i)=>{
-        arr_respostas.push([])
-        arr_respostas[i].push(`PERGUNTA ${i+1}`)
-        arr_respostas[i].push(cod[i] == quiz.respostas_corretas[i])
-    } )
-        
-    //estrutura para mostrar para o usuário as perguntas que ele errou ou acertou.
-    if(arr_respostas.every((n) => n[1] == true)){
-        res.innerHTML = 'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'
-    }else if(arr_respostas.every((n) => n[1] == false)){
-        res.innerHTML = 'Que pena<br>Você não acertou nenhuma questão &#128577;<br>'
-    }else{
+    const all_false_or_true = [
+        [arr_respostas.every((n) => n[1] == true),'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'],
+        [arr_respostas.every((n) => n[1] == false),'Que pena<br>Você não acertou nenhuma questão &#128577;<br>'],
+        [true,'']
+    ]
+    res.innerHTML = (all_false_or_true.find(n => n[0] == true))[1]
+    if(res.innerHTML == ''){
         arr_respostas.forEach((e)=>{
             if(e[1]){
                 res.innerHTML += `<p>${e[0]}<spam id="icon-acerto">&#10004;</spam><br></p>`
@@ -149,7 +146,6 @@ function Show_res(cod) {
             }
         })
     }
-    
 }
 
 //Função que muda a cor do botão das respostas
