@@ -6,6 +6,9 @@
 body{
     overflow-x: hidden;
 }
+#col-left-hidden,#col-right-hidden{
+    background-color: chartreuse;
+}
 
 /* div ,#video{
     border: 1px solid;
@@ -132,5 +135,9 @@ body{
     }
     #col-left-hidden,#col-right-hidden{
         display: flex;
+    }
+    #col-left-hidden{
+        width: 94%;
+        margin: auto;
     }
 }
