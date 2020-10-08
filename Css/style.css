@@ -62,7 +62,7 @@ body{
 /* Descrição */
 
 #descricao{
-    width: 808px;
+    width: 95%;
     text-align: justify;
     margin: 30px auto;
     padding: 10px;
@@ -102,9 +102,6 @@ body{
         width: 550px;
         height: 350px;
     }
-    #descricao{
-        width: 600px;
-    }
 }
 
 @media(max-width: 900px){
@@ -116,9 +113,6 @@ body{
     #col-left ul,#col-right ul{
         margin:30px auto;
         list-style: none;
-    }
-    #descricao{
-        width: 450px;
     }
 }
 
