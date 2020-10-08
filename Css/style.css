@@ -12,24 +12,30 @@ body{
 } */
 
 #col-left, #col-main, #col-rigth{
-    height: 100vh;
+    height: 100%;
 }
 
 /* Titulo */
 
 #col-main #titulo{
-    height: 135px;
+    height: 150px;
     align-items: center;
 }
 
 #col-main #titulo ul{
     list-style: none;
     text-align: center;
-    margin:0 auto;
+    margin:20px auto;
 }
 
 #col-main #titulo h1{
     text-transform: uppercase;
+}
+
+#nome-do-projeto{
+    text-align: center;
+    text-transform: uppercase;
+    margin: 40px 0;
 }
 
 /* Vídeo */

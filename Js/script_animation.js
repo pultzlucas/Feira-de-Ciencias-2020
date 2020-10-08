@@ -31,6 +31,5 @@ anime_scroll()
 if(target.length){
     window.addEventListener('scroll',debounce(()=>{
         anime_scroll()
-        console.log('pesadão')
     },30))
 }
