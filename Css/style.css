@@ -7,13 +7,10 @@
 body{
     overflow-x: hidden;
 }
-/* #col-left-hidden,#col-right-hidden{
-    background-color: chartreuse;
-} */
 
-/* div ,#video{
+div ,#video{
     border: 1px solid;
-} */
+}
 
 /* Titulo */
 
@@ -37,6 +34,16 @@ body{
     text-align: center;
     text-transform: uppercase;
     margin: 40px 0;
+}
+
+/* Main */
+#col-main{
+    position: relative;
+}
+
+/* Carousel */
+.carousel{
+    margin: auto;
 }
 
 /* Vídeo */
@@ -102,6 +109,7 @@ body{
     font-size: larger;
     letter-spacing: 2px;
 }
+
 /* Responsividade */
 
 @media(max-width: 1200px){
@@ -113,8 +121,8 @@ body{
 
 @media(max-width: 900px){
     #video video{
-        width: 400px;
-        height: 300px;
+        width: 370px;
+        height: 270px;
     }
 
     #col-left ul,#col-right ul{
