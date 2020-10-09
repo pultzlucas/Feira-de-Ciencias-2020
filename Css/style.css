@@ -42,8 +42,9 @@ div ,#video{
 }
 
 /* Carousel */
-.carousel{
-    margin: auto;
+
+.carousel-item img{
+    height: 400px;
 }
 
 /* Vídeo */
@@ -51,6 +52,11 @@ div ,#video{
 #video{
     margin: 20px auto;
     text-align: center;
+}
+
+#video video{
+    height: 90%;
+    width: 100%;
 }
 
 /* Links */
@@ -112,29 +118,10 @@ div ,#video{
 
 /* Responsividade */
 
-@media(max-width: 1200px){
-    #video video{
-        width: 550px;
-        height: 350px;
-    }
-}
-
-@media(max-width: 900px){
-    #video video{
-        width: 370px;
-        height: 270px;
-    }
-
-    #col-left ul,#col-right ul{
-        margin:30px auto;
-        list-style: none;
-    }
-}
-
 @media(max-width: 577px){
     #video video{
-        width: 400px;
-        height: 300px;
+        width: 350px;
+        height: 250px;
     }
     #col-left,#col-right{
         display: none;
@@ -145,5 +132,8 @@ div ,#video{
     #col-left-hidden{
         width: 94%;
         margin: auto;
+    }
+    .carousel-item img{
+        height: 250px;
     }
 }
