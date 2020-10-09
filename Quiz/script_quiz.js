@@ -153,7 +153,7 @@ function button_color(n=''){
     for(let n_b = 0;n_b < 4; n_b++){
        btn_resp[n_b].style.backgroundColor =''
     }
-    if(n.length != ''){
+    if(n != ''){
         btn_resp[n].style.backgroundColor = 'rgb(0 , 110, 150 , .2)'
     }   
 }
