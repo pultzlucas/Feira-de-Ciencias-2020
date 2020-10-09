@@ -50,7 +50,6 @@ button{
 
 #btn-ini{
     padding: 10px 20px;
-    margin-bottom: 30px;
 }
 
 button[name='btn_resp']{
@@ -89,13 +88,4 @@ button[name='btn_resp']{
 #icon-erro{
     color: red;
     margin: 0 10px;
-}
-/* Copy */
-#copy p{
-    position: absolute;
-    bottom: 0px;
-    left: 50%;
-    transform: translateX(-50%);
-    color: #555;
-    font-size: small;
 }
