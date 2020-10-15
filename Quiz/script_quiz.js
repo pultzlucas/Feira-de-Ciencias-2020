@@ -167,8 +167,9 @@ function isCorrect_orNo(cod){
     let isTrue_orFalse = []
     quiz.respostas_corretas.forEach( (_,i)=>{
         isTrue_orFalse.push([])
-        isTrue_orFalse[i].push(quiz.quests.perguntas[i])
         isTrue_orFalse[i].push(cod[i] == quiz.respostas_corretas[i])
+        isTrue_orFalse[i].push(quiz.quests.perguntas[i])
+        isTrue_orFalse[i].push(quiz.quests.respostas[i][codigo_resp[i]])
     } )
     return isTrue_orFalse
 }
@@ -206,13 +207,15 @@ function Show_res() {
     res.innerHTML = (numberOf_correctAnswers.find(n => n[0] === num_hit))[1]/*Mostra o comentário
     referente ao número de acertos*/
 
-    res.innerHTML +=`<br>${num_hit}/${quiz.quant_quest}`//mostra a quantidade de acertos
-
-        arr_respostas.forEach((e)=>{ //mostra quais questões foram acertadas
-            if(e[1]){
-                res.innerHTML += `<p>${e[0]}<spam id="icon-acerto">&#10004;</spam><br></p>`
+    res.innerHTML +=`<p>${num_hit}/${quiz.quant_quest}</p>`//mostra a quantidade de acertos
+    console.log(arr_respostas)
+        arr_respostas.forEach((e,i)=>{ //mostra quais questões foram acertadas
+            if(e[0]){
+                res.innerHTML += `<p id="resposta-correta"><b>${i+1}) ${e[1]}</b><br></p>`
+                res.innerHTML += `<p id="resposta-correta">${e[2]}<spam id="icon-acerto">&#10004;</spam><br></p>`
             }else{
-                res.innerHTML += `<p>${e[0]}<spam id="icon-erro">&#10008;</spam><br></p>`
+                res.innerHTML += `<p id="resposta-incorreta"><b>${i+1}) ${e[1]}</b><br></p>`
+                res.innerHTML += `<p id="resposta-incorreta">${e[2]}<spam id="icon-erro">&#10008;</spam><br></p>`
             }
         })
 }

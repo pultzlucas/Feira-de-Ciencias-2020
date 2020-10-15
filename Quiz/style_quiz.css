@@ -22,7 +22,6 @@ h4{
 .jumbotron{
     width: 80%;
     max-width: 700px;
-    max-height: 600px;
     position: absolute;
     box-shadow: 1px 2px 7px;
     top: 50%;
@@ -64,8 +63,14 @@ button[name='btn_resp']{
     margin-top: 20px;
 }
 
+/* Resultado */
+
 #res{
     font-size: x-large;
+}
+
+#res p[id="resposta-correta"], p[id="resposta-incorreta"]{
+    text-align: justify;
 }
 
 /* icones */
@@ -88,4 +93,10 @@ button[name='btn_resp']{
 #icon-erro{
     color: red;
     margin: 0 10px;
+}
+
+@media(max-width: 577px){
+    .jumbotron{
+        transform: translate(-50%,-37%);
+    }
 }

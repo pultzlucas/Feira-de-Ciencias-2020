@@ -8,22 +8,26 @@ body{
     overflow-x: hidden;
 }
 
-div ,#video{
-    border: 1px solid;
-}
-
 /* Titulo */
 
 #titulo{
     height: 150px;
-    width: 100%;   
+    width: 100%; 
+    background-image: url("../Imagens e Vídeos/titulo_bg.jpg");  
+    background-position: bottom;    
 }
 
 #titulo ul{
-    line-height: 50px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 10px #666;
+    width: 100%;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    letter-spacing: 2px;
     list-style: none;
     text-align: center;
-    margin:20px auto;
+    margin-top: 3%;
 }
 
 #titulo h1{
@@ -41,41 +45,51 @@ div ,#video{
     position: relative;
 }
 
+h4{
+    text-align: center;
+    padding: 20px 0;
+}
+
 /* Carousel */
 
 .carousel-item img{
-    height: 400px;
+    height: 450px;
 }
 
 /* Vídeo */
 
 #video{
-    margin: 20px auto;
+    margin: 30px auto;
     text-align: center;
 }
 
 #video video{
+    margin: 10px 0 0 0;
     height: 90%;
     width: 100%;
 }
 
+/* Imagens */
+
+img{
+    margin: auto;
+    width: 95%;
+    height: 20%;
+}
+
 /* Links */
 
-#col-left ul,#col-right ul,#col-left-hidden ul,#col-right-hidden ul{
+#col-left ul,#col-right ul,#col-hidden ul{
     margin: 30px auto;
     text-align: center;
     list-style: none;
 }
 
-#col-left ul li,#col-right ul li, #col-left-hidden ul li,#col-right-hidden ul li{
+#col-left ul li,#col-right ul li, #col-hidden ul li{
     padding: 10px 0;
 }
 
-#col-left-hidden{
-    display: none;
-}
-
-#col-right-hidden{
+#col-hidden{
     display: none;
 }
 
@@ -84,9 +98,8 @@ div ,#video{
 #descricao{
     width: 95%;
     text-align: justify;
-    margin: 30px auto;
+    margin: 20px auto;
     padding: 10px;
-    position: static;
 }
 
 /* Card - quiz */
@@ -116,7 +129,6 @@ div ,#video{
     letter-spacing: 2px;
 }
 
-/* Responsividade */
 
 @media(max-width: 577px){
     #video video{
@@ -126,10 +138,8 @@ div ,#video{
     #col-left,#col-right{
         display: none;
     }
-    #col-left-hidden,#col-right-hidden{
+    #col-hidden{
         display: flex;
-    }
-    #col-left-hidden{
         width: 94%;
         margin: auto;
     }
