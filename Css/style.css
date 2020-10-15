@@ -13,13 +13,14 @@ body{
 #titulo{
     height: 150px;
     width: 100%; 
-    background-image: url("../Imagens e Vídeos/titulo_bg.jpg");  
-    background-position: bottom;    
+    background-image: url("../Imagens e Vídeos/foto-etec-leme.jpg");  
+    background-position: bottom;
+    background-size: cover;   
 }
 
 #titulo ul{
     text-transform: uppercase;
-    text-shadow: 1px 1px 10px #666;
+    text-shadow: 0px 0px 10px #fff, 0px 0px 20px #fff , 1px 1px 40px #fff;
     width: 100%;
     position: absolute;
     left: 50%;
@@ -53,7 +54,7 @@ h4{
 /* Carousel */
 
 .carousel-item img{
-    height: 450px;
+    height: 500px;
 }
 
 /* Vídeo */
