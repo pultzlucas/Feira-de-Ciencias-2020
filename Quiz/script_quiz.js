@@ -10,6 +10,14 @@ const quiz = {
     respostas_corretas: [0,2,2],//Respostas corretas
 
     quests: {
+        perguntas: [
+            'As máquinas simples apresentam dois tipos de força que são: ',
+
+            'O que é uma alavanca?',
+            
+            'Quantas alavancas existem na experiência?'
+        ],
+        
         respostas: [
             [
                 'Força Motriz ou Potente e Força Resistente',
@@ -30,15 +38,7 @@ const quiz = {
                 'Há uma alavanca sem ponto de apoio', 
                 'Há duas alavancas com pontos de apoio distintos', 
                 'Não há alavancas no experimento']
-            ],
-
-        perguntas: [
-            'As máquinas simples apresentam dois tipos de força que são: ',
-
-            'O que é uma alavanca?',
-            
-            'Quantas alavancas existem na experiência?'
-        ]
+            ]
     },
 
     comment_results:[
@@ -49,11 +49,6 @@ const quiz = {
     ]
 }
 
-/* 'Que pena<br>Você não acertou nenhuma questão &#128577;<br>',//comentário se todas as respostas estiverem erradas
-        'Você pode melhorar',//comentário se um acerto
-        'Você está quase lá',//comentário se dois acertos
-        'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'//comentário se todas as respostas estiverem certas
- */
 /* 
 ================================================================================================================
 Funções para o funcionamento do quiz
