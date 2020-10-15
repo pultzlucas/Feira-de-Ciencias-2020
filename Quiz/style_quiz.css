@@ -97,7 +97,8 @@ button[name='btn_resp']{
 
 @media(max-width: 577px){
     .jumbotron{
+        padding: 10px;
         width: 90%;
-        transform: translate(-50%,-10%);
+        transform: translate(-50%,-20%);
     }
 }
