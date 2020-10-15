@@ -208,7 +208,6 @@ function Show_res() {
     referente ao número de acertos*/
 
     res.innerHTML +=`<p>${num_hit}/${quiz.quant_quest}</p>`//mostra a quantidade de acertos
-    console.log(arr_respostas)
         arr_respostas.forEach((e,i)=>{ //mostra quais questões foram acertadas
             if(e[0]){
                 res.innerHTML += `<p id="resposta-correta"><b>${i+1}) ${e[1]}</b><br></p>`
