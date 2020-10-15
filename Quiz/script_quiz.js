@@ -7,7 +7,7 @@ const quiz = {
     
     quant_quest: 3, //quantidade de questões
 
-    respostas_corretas: [0,2,2],//Respostas corretas
+    respostas_corretas: [0,2,0],//Respostas corretas
 
     quests: {
         perguntas: [
@@ -17,7 +17,7 @@ const quiz = {
             
             'Quantas alavancas existem na experiência?'
         ],
-        
+
         respostas: [
             [
                 'Força Motriz ou Potente e Força Resistente',
@@ -49,6 +49,11 @@ const quiz = {
     ]
 }
 
+/* 'Que pena<br>Você não acertou nenhuma questão &#128577;<br>',//comentário se todas as respostas estiverem erradas
+        'Você pode melhorar',//comentário se um acerto
+        'Você está quase lá',//comentário se dois acertos
+        'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'//comentário se todas as respostas estiverem certas
+ */
 /* 
 ================================================================================================================
 Funções para o funcionamento do quiz
