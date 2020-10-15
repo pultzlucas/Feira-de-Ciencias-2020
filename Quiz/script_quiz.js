@@ -7,53 +7,57 @@ const quiz = {
     
     quant_quest: 3, //quantidade de questões
 
-    respostas_corretas: [0,0,0],//Respostas corretas
+    respostas_corretas: [0,2,2],//Respostas corretas
 
     quests: {
         respostas: [
             [
-                'Resposta certa',
-                'Resposta errada',
-                'Resposta errada',
-                'Resposta errada'
+                'Força Motriz ou Potente e Força Resistente',
+                'Força Peso e Força Motriz',
+                'Força de Atrito e Força de Empuxo',
+                'Força Elástica e Força Magnética'
             ],
 
             [
-                'Resposta certa',
-                'Resposta errada',
-                'Resposta errada', 
-                'Resposta errada'
+                'É um tipo de máquina simples que não altera a força aplicada sobre um objeto',
+                'É um tipo de máquina composta que multiplica a força aplicada sobre um objeto ',
+                'É um tipo de máquina simples utilizada para multiplicar a força aplicada sobre um objeto',
+                'Nenhuma das ateriores'
             ],
 
             [
-                'Resposta certa',
-                'Resposta errada',
-                'Resposta errada',
-                'Resposta errada'
+                'Há duas alavancas com pontos de apoio iguais', 
+                'Há uma alavanca sem ponto de apoio', 
+                'Há duas alavancas com pontos de apoio distintos', 
+                'Não há alavancas no experimento']
             ],
-        ],
 
         perguntas: [
-            'Pergunta 1',
+            'As máquinas simples apresentam dois tipos de força que são: ',
 
-            'Pergunta 2',
+            'O que é uma alavanca?',
             
-            'Pergunta 3'
+            'Quantas alavancas existem na experiência?'
         ]
     },
 
     comment_results:[
-        'Que pena<br>Você não acertou nenhuma questão &#128577;<br>',//comentário se todas as respostas estiverem erradas
-        'Você pode melhorar',//comentário se um acerto
-        'Você está quase lá',//comentário se dois acertos
+        'Que pena<br>Você não acertou nenhuma questão &#128577',//comentário se todas as respostas estiverem erradas
+        'Você pode melhorar 🤔',//comentário se um acerto
+        'Você está quase lá 😉',//comentário se dois acertos
         'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'//comentário se todas as respostas estiverem certas
     ]
 }
 
+/* 'Que pena<br>Você não acertou nenhuma questão &#128577;<br>',//comentário se todas as respostas estiverem erradas
+        'Você pode melhorar',//comentário se um acerto
+        'Você está quase lá',//comentário se dois acertos
+        'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'//comentário se todas as respostas estiverem certas
+ */
 /* 
-===================================================================================
-Funções de manipulação das informações do quiz, esseciais para o seu funcionamento.
-===================================================================================
+================================================================================================================
+Funções para o funcionamento do quiz
+================================================================================================================
 */
 
 const codigo_resp = [] /* Esse array vai armazenar as respostas do usuário de acordo com o código do botão 
@@ -86,7 +90,6 @@ function send_cod() {
 
 //Função mãe que executa outras funções dependendo do número da pergunta do quiz
 function alter_quest() {
-    button_color()//função button_color para remover a cor do botão da pergunta passada
     if (cat_cod.length === 0 && contador>1) { //condição para conferir se o usuário assinalou alguma alternativa
         alert('Escolha uma alternativa para continuar o quiz.')
         contador--
@@ -124,20 +127,39 @@ function alter_layout(n) {
     }
 }
 
+
 /* Essa função escreve as perguntas e respostas do quiz. 
 Ela é chamada toda vez que a pergunta do quiz muda  */
 function write_data() {
-
+    
     if (contador === quiz.quant_quest) {
         document.querySelector('#btn_mp').innerHTML = 'Mostrar resultado'
     }
-
+    
     document.querySelector('p').innerHTML = quiz.quests.perguntas[contador-1]
 
-    for (let nq = 0; nq < quiz.quant_quest+1; nq++) {
+    for(nq = 0; nq < quiz.quests.respostas[contador-1].length; nq++) {
         btn_resp[nq].innerHTML = quiz.quests.respostas[contador-1][nq]
     }
+
+    button_color()//função button_color para remover a cor do botão da pergunta passada
 }
+
+//Função que muda a cor do botão das respostas
+function button_color(n=''){
+    for(let n_b = 0;n_b < quiz.quests.respostas[contador-1].length; n_b++){
+       btn_resp[n_b].style.backgroundColor =''
+    }
+    if(n.length != ''){
+        btn_resp[n].style.backgroundColor = 'rgb(0 , 110, 150 , .2)'
+    }   
+}
+
+/* 
+====================================
+Funções para calcular os resultados
+====================================
+*/
 
 /* função para saber quais respostas estão corretas ou incorretas para armazenar no isTrue_orFalse
 e retornar esse array para a variável arr_respostas do show_res */
@@ -145,14 +167,14 @@ function isCorrect_orNo(cod){
     let isTrue_orFalse = []
     quiz.respostas_corretas.forEach( (_,i)=>{
         isTrue_orFalse.push([])
-        isTrue_orFalse[i].push(`PERGUNTA ${i+1}`)
+        isTrue_orFalse[i].push(quiz.quests.perguntas[i])
         isTrue_orFalse[i].push(cod[i] == quiz.respostas_corretas[i])
     } )
     return isTrue_orFalse
 }
 
 //Essa função vai retornar o número de acertos do usuário
-function num_hit_sucess(cod){
+function num_hit_success(cod){
     let n_hit = 0
     quiz.respostas_corretas.forEach( (_,i)=>{
         if(cod[i] == quiz.respostas_corretas[i]){
@@ -161,21 +183,25 @@ function num_hit_sucess(cod){
     } )
     return n_hit
 }
-
-//Mostra quantas e quais questões o usuário acertou
-function Show_res() {
-    const arr_respostas = isCorrect_orNo(codigo_resp)
-    const num_hit = num_hit_sucess(codigo_resp)
-    
-    const numberOf_correctAnswers = []
+//Essa função pega os comentários de resultado do quiz e retorna para o show_res em um array
+function correct_answers(){
+    let num_correctAnswers = []
     for(let i = 0; i < quiz.quant_quest+1 ; i++){
-        numberOf_correctAnswers.push(
+        num_correctAnswers.push(
             [
                 Number(quiz.quant_quest-quiz.quant_quest + i),
                 quiz.comment_results[i]
             ]
         )
     }
+    return num_correctAnswers
+}
+
+//Mostra quantas e quais questões o usuário acertou
+function Show_res() {
+    const arr_respostas = isCorrect_orNo(codigo_resp)
+    const num_hit = num_hit_success(codigo_resp)
+    const numberOf_correctAnswers = correct_answers()
 
     res.innerHTML = (numberOf_correctAnswers.find(n => n[0] === num_hit))[1]/*Mostra o comentário
     referente ao número de acertos*/
@@ -191,13 +217,5 @@ function Show_res() {
         })
 }
 
-//Função que muda a cor do botão das respostas
-function button_color(n=''){
-    for(let n_b = 0;n_b < 4; n_b++){
-       btn_resp[n_b].style.backgroundColor =''
-    }
-    if(n.length != ''){
-        btn_resp[n].style.backgroundColor = 'rgb(0 , 110, 150 , .2)'
-    }   
-}
+
 
