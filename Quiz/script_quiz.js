@@ -30,15 +30,16 @@ const quiz = {
                 'É um tipo de máquina simples que não altera a força aplicada sobre um objeto',
                 'É um tipo de máquina composta que multiplica a força aplicada sobre um objeto ',
                 'É um tipo de máquina simples utilizada para multiplicar a força aplicada sobre um objeto',
-                'Nenhuma das ateriores'
+                'Nenhuma das anteriores'
             ],
 
             [
                 'Há duas alavancas com pontos de apoio iguais', 
                 'Há uma alavanca sem ponto de apoio', 
                 'Há duas alavancas com pontos de apoio distintos', 
-                'Não há alavancas no experimento']
+                'Não há alavancas no experimento'
             ]
+        ]
     },
 
     comment_results:[
@@ -49,11 +50,6 @@ const quiz = {
     ]
 }
 
-/* 'Que pena<br>Você não acertou nenhuma questão &#128577;<br>',//comentário se todas as respostas estiverem erradas
-        'Você pode melhorar',//comentário se um acerto
-        'Você está quase lá',//comentário se dois acertos
-        'PARABÉNS!<br>Você acertou todas as perguntas &#127942;'//comentário se todas as respostas estiverem certas
- */
 /* 
 ================================================================================================================
 Funções para o funcionamento do quiz
@@ -198,7 +194,7 @@ function correct_answers(){
     return num_correctAnswers
 }
 
-//Mostra quantas e quais questões o usuário acertou
+//Mostra quantas e quais questões o usuário acertou e errou
 function Show_res() {
     const arr_respostas = isCorrect_orNo(codigo_resp)
     const num_hit = num_hit_success(codigo_resp)
@@ -208,7 +204,7 @@ function Show_res() {
     referente ao número de acertos*/
 
     res.innerHTML +=`<p>${num_hit}/${quiz.quant_quest}</p>`//mostra a quantidade de acertos
-        arr_respostas.forEach((e,i)=>{ //mostra quais questões foram acertadas
+        arr_respostas.forEach((e,i)=>{ //mostra quais questões foram acertadas e erradas
             if(e[0]){
                 res.innerHTML += `<p id="resposta-correta"><b>${i+1}) ${e[1]}</b><br></p>`
                 res.innerHTML += `<p id="resposta-correta">${e[2]}<spam id="icon-acerto">&#10004;</spam><br></p>`
